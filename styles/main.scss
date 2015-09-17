@@ -1,0 +1,81 @@
+@import 'normalize';
+@import 'skeleton';
+@import url(https://fonts.googleapis.com/css?family=Abel);
+
+body{
+  nav{
+    background: #000;
+    padding: 0 2em;
+    height: 3em;
+    h3{
+      font-family: 'Abel', sans-serif;
+      margin: 0;
+      font-size: 36px;
+      color: #9E3CCE;
+      float: left;
+    }
+    h6{
+      float: right;
+      line-height: 3em;
+      font-style: italic;
+      color: #9E3CCE;
+      display: none;
+    }
+    > div.fa {
+      line-height: 1.5em;
+      float: right;
+    }
+    .fa-plus-square{
+      color: white;
+      font-size: 28px;
+    }
+  }
+}
+main.container{
+  div.row{
+    margin: 0;
+    max-width: none;
+
+    div.four.columns{
+      > div{
+        float: left;
+        margin-top: 3em;
+        display: none;
+        }
+      .plus-image{
+        background: url('/images/plus.svg');
+        height: 32px;
+        width: 32px;
+        margin: 2.75em .5em 0 0;
+        display: none;
+
+        }
+      form{
+        float:left;
+        #image-link{
+          margin-top: 2em;
+          width: 100%;
+          }
+        #image-caption{
+          width: 100%;
+        }
+        .white-border{
+          border: 3px solid white;
+          width: 50%;
+          float: left;
+          box-sizing: border-box;
+          #cancel{
+            width: 100%;
+          }
+          #submit{
+            width: 100%;
+          }
+        }
+      }
+    }
+    div.eight.columns{
+      margin-top: 3em;
+
+    }
+  }
+}
