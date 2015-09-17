@@ -3,6 +3,7 @@
 @import url(https://fonts.googleapis.com/css?family=Abel);
 
 body{
+  font-family: 'Abel', sans-serif;
   nav{
     background: #000;
     padding: 0 2em;
@@ -18,10 +19,11 @@ body{
       float: right;
       line-height: 3em;
       font-style: italic;
-      color: #9E3CCE;
+      color: #FFFFFF;
       display: none;
+      margin: 0;
     }
-    > div.fa {
+    > a div.fa {
       line-height: 1.5em;
       float: right;
     }
@@ -37,20 +39,29 @@ main.container{
     max-width: none;
 
     div.four.columns{
-      > div{
-        float: left;
-        margin-top: 3em;
-        display: none;
-        }
-      .plus-image{
-        background: url('/images/plus.svg');
+      > a{
+        margin-top: 2.75em;
         height: 32px;
-        width: 32px;
-        margin: 2.75em .5em 0 0;
+        line-height: 32px;
+        color: black;
         display: none;
+        text-decoration: none;
 
-        }
+        > div{
+          float: left;
+          display: none;
+          }
+        .plus-image{
+          float: left;
+          background: url('/images/plus.svg');
+          height: 32px;
+          width: 32px;
+          margin: 0 .5em 0 0;
+          display: none;
+          }
+      }
       form{
+        display: none;
         float:left;
         #image-link{
           margin-top: 2em;
@@ -76,6 +87,57 @@ main.container{
     div.eight.columns{
       margin-top: 3em;
 
+    }
+  }
+}
+
+@media screen and (min-width: 549px){
+  .four.columns{
+    width: 100%;
+  }
+  .eight.columns{
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 749px){
+  .four.columns{
+    width: 30.6666666667%;
+  }
+  .eight.columns{
+    width: 65.3333333333%;
+  }
+
+  nav{
+    padding-left: 3em;
+    #slogin{
+      display:block;
+    }
+    .fa-plus-square{
+      display: none;
+    }
+  }
+  main.container{
+    div.row{
+      div.four.columns{
+        a{
+          display: block;
+          width: 8em;
+          > div{
+          display: inline-block;
+        }
+          div.plus-image{
+          display: inline-block;
+          }
+        }
+
+        form{
+          .white-border{
+            float: none;
+            width: 100%;
+          }
+        }
+      }
     }
   }
 }

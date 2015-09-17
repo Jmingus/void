@@ -674,7 +674,7 @@ input[type="url"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-  border: 1px solid #33C3F0;
+  border: 1px solid #9E3CCE;
   outline: 0; }
 
 label,
@@ -820,43 +820,54 @@ there.
 /* Larger than tablet */
 /* Larger than desktop */
 /* Larger than Desktop HD */
-body nav {
-  background: #000;
-  padding: 0 2em;
-  height: 3em; }
-  body nav h3 {
-    font-family: 'Abel', sans-serif;
-    margin: 0;
-    font-size: 36px;
-    color: #9E3CCE;
-    float: left; }
-  body nav h6 {
-    float: right;
-    line-height: 3em;
-    font-style: italic;
-    color: #9E3CCE;
-    display: none; }
-  body nav > div.fa {
-    line-height: 1.5em;
-    float: right; }
-  body nav .fa-plus-square {
-    color: white;
-    font-size: 28px; }
+body {
+  font-family: 'Abel', sans-serif; }
+  body nav {
+    background: #000;
+    padding: 0 2em;
+    height: 3em; }
+    body nav h3 {
+      font-family: 'Abel', sans-serif;
+      margin: 0;
+      font-size: 36px;
+      color: #9E3CCE;
+      float: left; }
+    body nav h6 {
+      float: right;
+      line-height: 3em;
+      font-style: italic;
+      color: #FFFFFF;
+      display: none;
+      margin: 0; }
+    body nav > a div.fa {
+      line-height: 1.5em;
+      float: right; }
+    body nav .fa-plus-square {
+      color: white;
+      font-size: 28px; }
 
 main.container div.row {
   margin: 0;
   max-width: none; }
-  main.container div.row div.four.columns > div {
-    float: left;
-    margin-top: 3em;
-    display: none; }
-  main.container div.row div.four.columns .plus-image {
-    background: url("/images/plus.svg");
+  main.container div.row div.four.columns > a {
+    margin-top: 2.75em;
     height: 32px;
-    width: 32px;
-    margin: 2.75em 0.5em 0 0;
-    display: none; }
+    line-height: 32px;
+    color: black;
+    display: none;
+    text-decoration: none; }
+    main.container div.row div.four.columns > a > div {
+      float: left;
+      display: none; }
+    main.container div.row div.four.columns > a .plus-image {
+      float: left;
+      background: url("/images/plus.svg");
+      height: 32px;
+      width: 32px;
+      margin: 0 0.5em 0 0;
+      display: none; }
   main.container div.row div.four.columns form {
+    display: none;
     float: left; }
     main.container div.row div.four.columns form #image-link {
       margin-top: 2em;
@@ -874,3 +885,31 @@ main.container div.row {
         width: 100%; }
   main.container div.row div.eight.columns {
     margin-top: 3em; }
+
+@media screen and (min-width: 549px) {
+  .four.columns {
+    width: 100%; }
+  .eight.columns {
+    width: 100%; } }
+
+@media screen and (min-width: 749px) {
+  .four.columns {
+    width: 30.6666666667%; }
+  .eight.columns {
+    width: 65.3333333333%; }
+  nav {
+    padding-left: 3em; }
+    nav #slogin {
+      display: block; }
+    nav .fa-plus-square {
+      display: none; }
+  main.container div.row div.four.columns a {
+    display: block;
+    width: 8em; }
+    main.container div.row div.four.columns a > div {
+      display: inline-block; }
+    main.container div.row div.four.columns a div.plus-image {
+      display: inline-block; }
+  main.container div.row div.four.columns form .white-border {
+    float: none;
+    width: 100%; } }
