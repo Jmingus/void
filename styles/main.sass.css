@@ -868,7 +868,8 @@ main.container div.row {
       display: none; }
   main.container div.row div.four.columns form {
     display: none;
-    float: left; }
+    float: left;
+    width: 100%; }
     main.container div.row div.four.columns form #image-link {
       margin-top: 2em;
       width: 100%; }

@@ -5,29 +5,43 @@ $(document).ready(function () {
 
   var $form = $('form');
   var $imageLink = $('#image-link');
+  var $imageLinkErrorBox = $('#image-link-error-box');
   var $imageCaption = $('#image-caption');
+  var $imageCaptionErrorBox = $('#image-caption-error-box');
+
   //functions
 
   function validateInput(imagelink, imagecaption) {
-    var validFlag = false;
+    var imagelinkvalid = false;
+    var imagecaptionvalid = false;
+
     if (imagelink.indexOf('http://') !== -1 || imagelink.indexOf('https://') !== -1) {
       if (imagelink.indexOf('.jpg') !== -1 || imagelink.indexOf('.png') !== -1 || imagelink.indexOf('.jpeg') !== -1 || imagelink.indexOf('.gif') !== -1) {
-        if (imagecaption !== '') {
-          validFlag = true;
-        } else {
-          console.log('Image Caption can\'t be blank');
-        };
+        imagelinkvalid = true;
       } else {
-        console.log('Image isn\'t a valid image type, must be a jpg, png, jpeg or gif');
+        errormessage = 'Image isn\'t a valid image type, must be a jpg, png, jpeg or gif';
+        appendErrors(errormessage, $imageLinkErrorBox);
       };
     } else {
-      console.log('Links should start with http:// or https://');
+      errormessage = 'Links should start with http:// or https://';
+      appendErrors(errormessage, $imageLinkErrorBox);
     };
-    if (validFlag === false) {
+
+    if (imagecaption !== '') {
+      imagelinkcaption = true;
+    } else {
+      errormessage = 'Image Caption can\'t be blank';
+      appendErrors(errormessage, $imageCaptionErrorBox);
+    };
+    if (imagelinkvalid === false || imagecaptionvalid === false) {
       return false;
     } else {
       return true;
     };
+  };
+
+  function appendErrors(errormessage, location) {
+    location.append('<div>' + errormessage + '</div>');
   };
 
   function post() {
