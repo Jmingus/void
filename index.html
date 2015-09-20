@@ -14,12 +14,27 @@
       <a href="#" id="nav-bar-add"><div class="fa fa-plus-square"></div></a>
     </nav>
 
+    <div id="sign-in-and-sign-up">
+      <a href="#sign-in" id="sign-in-link">Sign-In</a><a href="#sign-up" id="sign-up-link">Sign-Up</a>
+      <form id="sign-in">
+        <input type="text" placeholder="Username.">
+        <input type="password" placeholder="Password.">
+        <button id="sign-in-submit" type="submit">Sign In</button>
+      </form>
+      <form id="sign-up">
+        <input type="text" placeholder="Enter your username.">
+        <input type="password" placeholder="Enter your password.">
+        <button id="sign-up-submit" type="submit">Sign Up</button>
+      </form>
+      <p>Welcome to the Void, you need to create an account to view images.<br> If your a returning voidling please sign in!</p>
+    </div>
+
     <main class="container">
       <div class="row">
       <div id="successMessageBox">Image Posted!</div>
         <div class="four columns">
           <a href="#" id="column-add"><div class="plus-image"></div><div>Add Image</div></a>
-          <form>
+          <form id="image-form">
             <input id="image-link" type="text" placeholder="Image Url">
             <div id="image-link-error-box"></div>
             <input id="image-caption" type="text" placeholder="Image Caption">
