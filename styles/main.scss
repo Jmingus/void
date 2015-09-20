@@ -68,6 +68,7 @@ main.container{
         display: none;
         float:left;
         width: 100%;
+
         #image-link{
           margin-top: 2em;
           width: 100%;
@@ -105,7 +106,23 @@ main.container{
     }
     div.eight.columns{
       margin-top: 3em;
+      #image-container{
+        text-align:center;
+        height: 100%;
+        width: 100%;
+        .image-box{
 
+          img{
+            border: 1px solid #000000;
+            max-width: 100%;
+            height: auto;
+          }
+        }
+        .image-caption-container{
+          border: 1px solid #000000;
+          margin-bottom: 2em;
+        }
+      }
     }
   }
 }
@@ -119,9 +136,9 @@ main.container{
   }
 }
 
-@media screen and (min-width: 749px){
+@media screen and (min-width: 833px){
   .four.columns{
-    width: 30.6666666667%;
+    width: 26.6666666667%;
   }
   .eight.columns{
     width: 65.3333333333%;

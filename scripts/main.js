@@ -1,7 +1,7 @@
 'use strict';
 $(document).ready(function(){
   //variables
-
+  render()
   var $form = $('form');
   var $imageLink = $('#image-link');
   var $imageLinkErrorBox = $('#image-link-error-box')
@@ -73,13 +73,17 @@ $(document).ready(function(){
   };
 
   function render(){
+    $('#image-container').empty();
     $.get(
         'http://tiyfe.herokuapp.com/collections/void',
         function (response){
-
+          response.forEach(function(response){
+            $('#image-container').append('<div class="image-box"><img src="'+response.imageLink+'"></div>'+'<div class="image-caption-container">'+response.imageCaption+'</div><hr>');
+          })
         },
         'json'
       );
+
   };
 
   function resetInputs(){
@@ -123,5 +127,4 @@ $(document).ready(function(){
       successPost();
     }
   });
-
 });
