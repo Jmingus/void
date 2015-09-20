@@ -37,7 +37,11 @@ main.container{
   div.row{
     margin: 0;
     max-width: none;
-
+    #successMessageBox{
+      border: 1px solid #88C470;
+      display: none;
+      background: #8ECE57;
+    }
     div.four.columns{
       > a{
         margin-top: 2.75em;
@@ -70,6 +74,20 @@ main.container{
           }
         #image-caption{
           width: 100%;
+        }
+        #image-link-error-box{
+          display: none;
+          padding-left: 10px;
+          border: 1px solid #DE2B3A;
+          border-radius: 4px;
+          margin-bottom: 1em;
+        }
+        #image-caption-error-box{
+          border: 1px solid #DE2B3A;
+          border-radius: 4px;
+          display: none;
+          padding-left: 10px;
+          margin-bottom: 1em;
         }
         .white-border{
           border: 3px solid white;

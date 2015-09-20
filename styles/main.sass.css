@@ -849,6 +849,10 @@ body {
 main.container div.row {
   margin: 0;
   max-width: none; }
+  main.container div.row #successMessageBox {
+    border: 1px solid #88C470;
+    display: none;
+    background: #8ECE57; }
   main.container div.row div.four.columns > a {
     margin-top: 2.75em;
     height: 32px;
@@ -875,6 +879,18 @@ main.container div.row {
       width: 100%; }
     main.container div.row div.four.columns form #image-caption {
       width: 100%; }
+    main.container div.row div.four.columns form #image-link-error-box {
+      display: none;
+      padding-left: 10px;
+      border: 1px solid #DE2B3A;
+      border-radius: 4px;
+      margin-bottom: 1em; }
+    main.container div.row div.four.columns form #image-caption-error-box {
+      border: 1px solid #DE2B3A;
+      border-radius: 4px;
+      display: none;
+      padding-left: 10px;
+      margin-bottom: 1em; }
     main.container div.row div.four.columns form .white-border {
       border: 3px solid white;
       width: 50%;
