@@ -8,6 +8,8 @@ $(document).ready(function () {
   var $imageLinkErrorBox = $('#image-link-error-box');
   var $imageCaption = $('#image-caption');
   var $imageCaptionErrorBox = $('#image-caption-error-box');
+  var currentUserName = null;
+  var url = 'http://tiyfe.herokuapp.com/collections/void';
 
   //functions
 
@@ -58,7 +60,7 @@ $(document).ready(function () {
 
   function post() {
     if (validateInput($imageLink.val(), $imageCaption.val())) {
-      $.post('http://tiyfe.herokuapp.com/collections/void', { imageLink: $imageLink.val(), imageCaption: $imageCaption.val() }, function (response) {
+      $.post(url, { imageLink: $imageLink.val(), imageCaption: $imageCaption.val() }, function (response) {
         console.log('posted', response);
       }, 'json');
       return true;
@@ -67,9 +69,35 @@ $(document).ready(function () {
     }
   };
 
+  function signUp() {
+    var validUserNameFlag = true;
+
+    var dataBase = $.get(url, function (response) {
+      console.log(response);
+    }, 'json');
+    for (var i = 0; i < dataBase.length; i++) {
+      if (dataBase[i].user === $('#sign-up-username').val()) {
+        validUserNameFlag = false;
+      }
+
+      if (validUserNameFlag === false) {
+        console.log('username already taken!');
+        return false;
+      } else {
+        $.post(url, { user: $('#sign-up-username').val(), password: $('#sign-up-password').val() }, function (response) {
+          console.log('User created', response);
+        }, 'json');
+        currentUserName = $('#sign-up-username').val();
+        return true;
+      }
+    }
+  };
+
+  function signIn() {};
+
   function render() {
     $('#image-container').empty();
-    $.get('http://tiyfe.herokuapp.com/collections/void', function (response) {
+    $.get(url, function (response) {
       response.forEach(function (response) {
         $('#image-container').append('<div class="image-box"><img src="' + response.imageLink + '"></div>' + '<div class="image-caption-container">' + response.imageCaption + '</div><hr>');
       });
@@ -88,6 +116,11 @@ $(document).ready(function () {
     $imageLinkErrorBox.hide();
   };
 
+  function hideEntryBox() {
+    $('#mask').hide();
+    $('#sign-in-and-sign-up').hide();
+  };
+
   function successPost() {
     $('#successMessageBox').show();
     $('#successMessageBox').fadeOut(4000);
@@ -98,6 +131,7 @@ $(document).ready(function () {
     $('body').append('<div id="mask"></div');
     $('#mask').fadeIn(300);
   };
+
   $('#nav-bar-add').click(function () {
     $form.toggle('slow');
     resetInputs();
@@ -106,11 +140,12 @@ $(document).ready(function () {
 
   $('#sign-in-link').click(function () {
     $(this).addClass('tab-active').siblings().removeClass('tab-active');
-    $('#sign-in').show();$('#sign-up').hide();$('p').hide();
+    $('#sign-in-form').show();$('#sign-up-form').hide();$('p').hide();
   });
+
   $('#sign-up-link').click(function () {
     $(this).addClass('tab-active').siblings().removeClass('tab-active');
-    $('#sign-up').show();$('#sign-in').hide();$('p').hide();
+    $('#sign-up-form').show();$('#sign-in-form').hide();$('p').hide();
   });
 
   $('#column-add').click(function () {
@@ -118,18 +153,26 @@ $(document).ready(function () {
     resetInputs();
     resetErrorBoxes();
   });
+
   $('#cancel').click(function () {
     $form.hide();
     resetInputs();
     resetErrorBoxes();
   });
 
-  $('#submit').click(function (e) {
+  $('#submit').click(function () {
     if (post()) {
       render();
       resetInputs();
       successPost();
-    }
+    };
+  });
+
+  $('#sign-up-form').submit(function () {
+    if (signUp() === true) {
+      console.log(currentUserName);
+      hideEntryBox();
+    };
   });
 });
 
