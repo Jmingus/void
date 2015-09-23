@@ -1,4 +1,7 @@
 'use strict';
+var $ = require('jquery');
+var Backbone = require('backbone');
+
 $(document).ready(function(){
   //variables
   render()
@@ -77,24 +80,27 @@ $(document).ready(function(){
   function signUp(){
     var validUserNameFlag = true
 
-    var dataBase = $.get(url,function(response){console.log(response)},'json')
-    for(var i = 0; i < dataBase.length; i++){
-      if(dataBase[i].user === $('#sign-up-username').val()){
-           validUserNameFlag = false;
-      }
+    $.get(url,function(response){
+      for(var i = 0; i < response.length; i++){
+        if(response[i].user === $('#sign-up-username').val()){
+             validUserNameFlag = false;
+        }
 
-      if(validUserNameFlag === false){
-        console.log('username already taken!')
-        return false;
-      }else{
-        $.post(url,{user: $('#sign-up-username').val(), password: $('#sign-up-password').val()},
-          function (response){console.log('User created', response);},
-          'json');
-        currentUserName = $('#sign-up-username').val();
-        return true;
-      }
-  }
+        if(validUserNameFlag === false){
+          console.log('username already taken!')
+          return false;
 
+        }else{
+          $.post(url,{user: $('#sign-up-username').val(), password: $('#sign-up-password').val()},
+            function (response){
+            console.log('User created', response);},
+            'json');
+
+          currentUserName = $('#sign-up-username').val();
+          return true;
+        }
+      }
+   },'json')
   };
 
   function signIn(){
